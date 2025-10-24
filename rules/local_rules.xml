@@ -1,0 +1,240 @@
+<!--
+  Wazuh Local Rules
+  - Clean, validated structure
+  - No duplicate rule IDs
+  - Uses only supported tags/attributes for Wazuh 4.x
+  - Includes both simple <match> rules and a CDATA-wrapped regex group
+-->
+
+<!-- ================= Base Windows LOLBins & Behaviors (simple matches) ================= -->
+<group name="local,custom,windows,behaviors">
+
+  <!-- Example Linux: ssh auth failure from a specific IP -->
+  <rule id="100001" level="5">
+    <if_sid>5716</if_sid>
+    <srcip>1.1.1.1</srcip>
+    <description>sshd: authentication failed from IP 1.1.1.1.</description>
+    <group>authentication_failed,pci_dss_10.2.4,pci_dss_10.2.5,</group>
+  </rule>
+
+  <!-- PowerShell encoded command (common variants) -->
+  <rule id="100100" level="12">
+    <match>powershell.exe</match>
+    <match>-EncodedCommand</match>
+    <description>Encoded PowerShell command detected (lowercase)</description>
+    <mitre><id>T1059.001</id></mitre>
+    <group>lolbin,powershell,execution</group>
+  </rule>
+
+  <rule id="100101" level="12">
+    <match>PowerShell.exe</match>
+    <match>-EncodedCommand</match>
+    <description>Encoded PowerShell command detected (PascalCase)</description>
+    <mitre><id>T1059.001</id></mitre>
+    <group>lolbin,powershell,execution</group>
+  </rule>
+
+  <rule id="100102" level="12">
+    <match>pwsh.exe</match>
+    <match>-enc</match>
+    <description>pwsh short-flag encoded command</description>
+    <mitre><id>T1059.001</id></mitre>
+    <group>lolbin,powershell,execution</group>
+  </rule>
+
+  <rule id="100103" level="12">
+    <match>powershell.exe</match>
+    <match>-enc</match>
+    <description>Encoded PowerShell short flag (lowercase)</description>
+    <mitre><id>T1059.001</id></mitre>
+    <group>lolbin,powershell,execution</group>
+  </rule>
+
+  <!-- WMIC usage -->
+  <rule id="100104" level="11">
+    <match>wmic</match>
+    <match>process call create</match>
+    <description>WMIC process creation (possible remote exec)</description>
+    <mitre><id>T1047</id></mitre>
+    <group>lolbin,wmic,lateral_movement</group>
+  </rule>
+
+  <rule id="100105" level="11">
+    <match>wmic</match>
+    <match>/node:</match>
+    <description>WMIC remote node usage</description>
+    <mitre><id>T1047</id></mitre>
+    <group>lolbin,wmic,lateral_movement</group>
+  </rule>
+
+  <!-- rundll32 LOLBin -->
+  <rule id="100106" level="12">
+    <match>rundll32.exe</match>
+    <match>javascript:</match>
+    <description>rundll32 with javascript scheme (Squiblydoo)</description>
+    <mitre><id>T1218.011</id></mitre>
+    <group>lolbin,rundll32,defense_evasion</group>
+  </rule>
+
+  <rule id="100107" level="12">
+    <match>rundll32.exe</match>
+    <match>url.dll,FileProtocolHandler</match>
+    <description>rundll32 URL handler abuse</description>
+    <mitre><id>T1218.011</id></mitre>
+    <group>lolbin,rundll32,defense_evasion</group>
+  </rule>
+
+  <!-- Download tools -->
+  <rule id="100108" level="10">
+    <match>bitsadmin</match>
+    <match>/transfer</match>
+    <match>http</match>
+    <description>BITSAdmin transfer from URL</description>
+    <mitre><id>T1197</id></mitre>
+    <group>lolbin,bitsadmin,download</group>
+  </rule>
+
+  <rule id="100110" level="11">
+    <match>certutil</match>
+    <match>-urlcache</match>
+    <match>http</match>
+    <description>certutil used to download a file (lowercase)</description>
+    <mitre><id>T1105</id></mitre>
+    <group>lolbin,certutil,download</group>
+  </rule>
+
+  <rule id="100111" level="11">
+    <match>CertUtil</match>
+    <match>-split</match>
+    <match>http</match>
+    <description>CertUtil split download (PascalCase)</description>
+    <mitre><id>T1105</id></mitre>
+    <group>lolbin,certutil,download</group>
+  </rule>
+
+  <!-- Process injection -->
+  <rule id="100109" level="12">
+    <match>CreateRemoteThread</match>
+    <description>Process injection: CreateRemoteThread</description>
+    <mitre><id>T1055</id></mitre>
+    <group>fileless,process_injection</group>
+  </rule>
+
+  <rule id="100112" level="11">
+    <match>CommandLineEventConsumer</match>
+    <description>WMI CommandLineEventConsumer (persistence indicator)</description>
+    <mitre><id>T1546.002</id></mitre>
+    <group>fileless,persistence,wmi</group>
+  </rule>
+
+  <!-- Registry persistence -->
+  <rule id="100113" level="10">
+    <match>\\Registry\\Machine\\Software\\Microsoft\\Windows\\CurrentVersion\\Run</match>
+    <description>Registry Run key modified (persistence)</description>
+    <mitre><id>T1547</id></mitre>
+    <group>persistence,registry</group>
+  </rule>
+
+  <rule id="100114" level="10">
+    <match>\\Registry\\Machine\\Software\\Microsoft\\Windows\\CurrentVersion\\RunOnce</match>
+    <description>Registry RunOnce key modified (persistence)</description>
+    <mitre><id>T1547</id></mitre>
+    <group>persistence,registry</group>
+  </rule>
+
+  <rule id="100115" level="10">
+    <match>\\Registry\\Machine\\System\\CurrentControlSet\\Services\\</match>
+    <description>Service registry path modified (persistence)</description>
+    <mitre><id>T1547</id></mitre>
+    <group>persistence,registry</group>
+  </rule>
+
+  <!-- Lateral movement cues -->
+  <rule id="100116" level="11">
+    <match>Authentication package</match>
+    <match>NTLM</match>
+    <description>Lateral movement: NTLM auth package activity</description>
+    <mitre><id>T1021</id></mitre>
+    <group>apt,lateral_movement</group>
+  </rule>
+
+  <rule id="100181" level="11">
+    <match>\\ADMIN$</match>
+    <description>Lateral movement: admin share access</description>
+    <mitre><id>T1021</id></mitre>
+    <group>apt,lateral_movement</group>
+  </rule>
+
+  <!-- Credential dumping reference -->
+  <rule id="100119" level="12">
+    <match>mimikatz</match>
+    <description>Credential dumping tool referenced (mimikatz)</description>
+    <mitre><id>T1003</id></mitre>
+    <group>local,custom,windows,credential_dumping</group>
+  </rule>
+
+</group>
+
+<!-- ================= Simple correlation (bursts) ================= -->
+<group name="local,custom,windows,correlation">
+
+  <!-- WMIC burst (>=5 in 120s) -->
+  <rule id="100200" level="13" frequency="5" timeframe="120">
+    <if_matched_sid>100104</if_matched_sid>
+    <description>WMIC process creation burst (>=5 in 120s)</description>
+    <group>lolbin,wmic,lateral_movement,correlation</group>
+  </rule>
+
+  <!-- Admin share access burst (>=6 in 300s) -->
+  <rule id="100201" level="13" frequency="6" timeframe="300">
+    <if_matched_sid>100181</if_matched_sid>
+    <description>Lateral movement activity burst (>=6 in 300s)</description>
+    <group>apt,lateral_movement,correlation</group>
+  </rule>
+
+</group>
+
+<!-- ================= Robust regex rules (CDATA-wrapped) ================= -->
+<group name="local,custom,windows,regex_lolbins_v2">
+
+  <!-- PowerShell encoded command (powershell.exe / pwsh.exe; -enc / -encodedcommand) -->
+  <rule id="100300" level="12">
+    <regex type="pcre2">(?i)(powershell|pwsh)\.exe.*-enc(odedcommand)?</regex>
+    <description>Encoded PowerShell command detected (regex)</description>
+    <mitre><id>T1059.001</id></mitre>
+    <group>lolbin,powershell,execution</group>
+  </rule>
+
+  <!-- certutil download from HTTP(S) -->
+  <rule id="100301" level="11">
+    <regex type="pcre2">(?i)certutil.*(-urlcache|-split).*https?://</regex>
+    <description>certutil used to download a file (regex)</description>
+    <mitre><id>T1105</id></mitre>
+    <group>lolbin,certutil,download</group>
+  </rule>
+
+  <!-- WMIC remote execution -->
+  <rule id="100302" level="11">
+    <regex type="pcre2">(?i)wmic.*process\s+call\s+create</regex>
+    <description>WMIC process creation (regex)</description>
+    <mitre><id>T1047</id></mitre>
+    <group>lolbin,wmic,lateral_movement</group>
+  </rule>
+
+  <!-- rundll32 Squiblydoo / javascript scheme -->
+  <rule id="100303" level="12">
+    <regex type="pcre2">(?i)rundll32\.exe.*javascript:</regex>
+    <description>rundll32 with javascript: scheme (regex)</description>
+    <mitre><id>T1218.011</id></mitre>
+    <group>lolbin,rundll32,defense_evasion</group>
+  </rule>
+
+  <!-- BITSAdmin download -->
+  <rule id="100304" level="10">
+    <regex type="pcre2">(?i)bitsadmin.*/transfer.*https?://</regex>
+    <description>BITSAdmin transfer from URL (regex)</description>
+    <mitre><id>T1197</id></mitre>
+    <group>lolbin,bitsadmin,download</group>
+  </rule>
+
+</group>
