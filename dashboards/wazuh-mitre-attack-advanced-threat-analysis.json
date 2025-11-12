@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 7,
+  "id": 0,
   "links": [],
   "panels": [
     {
@@ -61,15 +61,18 @@
       "id": 2,
       "options": {
         "displayLabels": [
-          "percent",
-          "name"
+          "percent"
         ],
         "legend": {
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "values": [
+            "value",
+            "percent"
+          ]
         },
-        "pieType": "pie",
+        "pieType": "donut",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -80,7 +83,7 @@
         "sort": "desc",
         "tooltip": {
           "hideZeros": false,
-          "mode": "all",
+          "mode": "single",
           "sort": "none"
         }
       },
@@ -96,25 +99,27 @@
                 "missing": "N/A",
                 "order": "desc",
                 "orderBy": "_count",
-                "size": "20"
+                "size": "15"
               },
               "type": "terms"
             }
           ],
-          "datasource": "Wazuh-Alerts-1",
-          "luceneQueryType": "Lucene",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "Wazuh-Alerts-1"
+          },
           "metrics": [
             {
               "id": "1",
               "type": "count"
             }
           ],
-          "query": "*",
+          "query": "rule.mitre.tactic:*",
           "refId": "A",
-          "timeField": "@timestamp"
+          "timeField": "timestamp"
         }
       ],
-      "title": "Tactics Distribution",
+      "title": "MITRE ATT&CK Tactics Distribution",
       "transformations": [
         {
           "id": "organize",
@@ -219,7 +224,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "*",
+          "query": "agent.name:($agent)",
           "refId": "A",
           "timeField": "@timestamp"
         }
@@ -279,6 +284,13 @@
         "y": 1
       },
       "id": 12,
+      "links": [
+        {
+          "targetBlank": false,
+          "title": "View all alerts with details",
+          "url": "/d/${__dashboard.uid}#alerts-with-mitre-context"
+        }
+      ],
       "options": {
         "colorMode": "background",
         "graphMode": "none",
@@ -318,7 +330,7 @@
               "type": "count"
             }
           ],
-          "query": "*",
+          "query": "agent.name:($agent)",
           "refId": "A",
           "timeField": "@timestamp"
         }
@@ -353,6 +365,13 @@
         "y": 1
       },
       "id": 14,
+      "links": [
+        {
+          "targetBlank": false,
+          "title": "View alerts by technique",
+          "url": "/d/wazuh-mitre-advanced/wazuh-mitre-advanced?viewPanel=80&var-agent=$agent"
+        }
+      ],
       "options": {
         "colorMode": "background",
         "graphMode": "none",
@@ -393,7 +412,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "*",
+          "query": "agent.name:($agent)",
           "refId": "A",
           "timeField": "@timestamp"
         }
@@ -428,6 +447,13 @@
         "y": 1
       },
       "id": 18,
+      "links": [
+        {
+          "targetBlank": false,
+          "title": "View critical alerts with MITRE context",
+          "url": "/d/wazuh-mitre-advanced/wazuh-mitre-advanced?viewPanel=80&var-agent=$agent"
+        }
+      ],
       "options": {
         "colorMode": "background",
         "graphMode": "none",
@@ -467,7 +493,7 @@
               "type": "count"
             }
           ],
-          "query": "rule.level:[7 TO *]",
+          "query": "agent.name:($agent) AND rule.level:[7 TO *]",
           "refId": "A",
           "timeField": "@timestamp"
         }
@@ -515,106 +541,244 @@
       "id": 20,
       "options": {
         "displayLabels": [
-          "percent",
-          "name"
+          "percent"
         ],
         "legend": {
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "values": [
+            "value",
+            "percent"
+          ]
         },
         "pieType": "donut",
         "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "sum"
           ],
           "fields": "",
           "values": false
         },
         "sort": "desc",
         "tooltip": {
-          "hideZeros": false,
-          "mode": "all",
+          "hideZeros": true,
+          "mode": "single",
           "sort": "none"
         }
       },
       "pluginVersion": "12.2.0",
       "targets": [
         {
+          "alias": "PowerShell",
           "bucketAggs": [
             {
+              "field": "@timestamp",
               "id": "2",
               "settings": {
-                "filters": [
-                  {
-                    "label": "PowerShell",
-                    "query": "rule.description:*powershell*"
-                  },
-                  {
-                    "label": "CertUtil",
-                    "query": "rule.description:*certutil*"
-                  },
-                  {
-                    "label": "WMIC",
-                    "query": "rule.description:*wmic*"
-                  },
-                  {
-                    "label": "rundll32",
-                    "query": "rule.description:*rundll32*"
-                  },
-                  {
-                    "label": "regsvr32",
-                    "query": "rule.description:*regsvr32*"
-                  },
-                  {
-                    "label": "mshta",
-                    "query": "rule.description:*mshta*"
-                  },
-                  {
-                    "label": "bitsadmin",
-                    "query": "rule.description:*bitsadmin*"
-                  }
-                ]
+                "interval": "auto"
               },
-              "type": "filters"
+              "type": "date_histogram"
             }
           ],
-          "datasource": "Wazuh-Alerts-1",
-          "luceneQueryType": "Lucene",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "Wazuh-Alerts-1"
+          },
           "metrics": [
             {
               "id": "1",
               "type": "count"
             }
           ],
-          "query": "*",
+          "query": "rule.id:(100500 OR 100501 OR 100502)",
           "refId": "A",
-          "timeField": "@timestamp"
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "CertUtil",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "Wazuh-Alerts-1"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "rule.id:(100510 OR 100511 OR 100512)",
+          "refId": "B",
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "BITSAdmin",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "Wazuh-Alerts-1"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "rule.id:(100520 OR 100521)",
+          "refId": "C",
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "WMIC",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "Wazuh-Alerts-1"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "rule.id:(100530 OR 100531)",
+          "refId": "D",
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "rundll32",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "Wazuh-Alerts-1"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "rule.id:(100540 OR 100541)",
+          "refId": "E",
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "mshta",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "Wazuh-Alerts-1"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "rule.id:100550",
+          "refId": "F",
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "regsvr32",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "Wazuh-Alerts-1"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "rule.id:(100560 OR 100561)",
+          "refId": "G",
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "Multiple LOLBins",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "Wazuh-Alerts-1"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "rule.id:(100600 OR 100601 OR 100602)",
+          "refId": "H",
+          "timeField": "timestamp"
         }
       ],
       "title": "LOLBins Usage Distribution",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "includeByName": {
-              "Count": true,
-              "filters": true
-            },
-            "indexByName": {
-              "Count": 1,
-              "filters": 0
-            }
-          }
-        },
-        {
-          "id": "rowsToFields",
-          "options": {
-            "fieldName": "filters",
-            "valueFieldName": "Count"
-          }
-        }
-      ],
       "type": "piechart"
     },
     {
@@ -638,10 +802,6 @@
               {
                 "color": "green",
                 "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           }
@@ -650,22 +810,23 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 10,
+        "w": 5,
         "x": 6,
         "y": 10
       },
       "id": 22,
       "options": {
         "cellHeight": "sm",
-        "showHeader": true
+        "showHeader": true,
+        "sortBy": []
       },
       "pluginVersion": "12.2.0",
       "targets": [
         {
           "bucketAggs": [
             {
-              "field": "rule.mitre.id",
-              "id": "2",
+              "field": "agent.name",
+              "id": "3",
               "settings": {
                 "min_doc_count": "1",
                 "order": "desc",
@@ -675,26 +836,28 @@
               "type": "terms"
             },
             {
-              "field": "agent.name",
-              "id": "3",
+              "field": "rule.description",
+              "id": "2",
               "settings": {
                 "min_doc_count": "1",
                 "order": "desc",
                 "orderBy": "_count",
-                "size": "3"
+                "size": "20"
               },
               "type": "terms"
             }
           ],
           "datasource": "Wazuh-Alerts-1",
+          "luceneQueryType": "Lucene",
           "metrics": [
             {
               "id": "1",
               "type": "count"
             }
           ],
-          "query": "powershell OR certutil OR wmic OR rundll32 OR regsvr32 OR mshta OR bitsadmin",
-          "refId": "A"
+          "query": "agent.name:($agent) AND rule.id:(100500 OR 100501 OR 100502 OR 100510 OR 100511 OR 100512 OR 100520 OR 100521 OR 100530 OR 100531 OR 100540 OR 100541 OR 100550 OR 100560 OR 100561 OR 100600 OR 100601 OR 100602)",
+          "refId": "A",
+          "timeField": "@timestamp"
         }
       ],
       "title": "LOLBins by Technique & Host",
@@ -727,7 +890,7 @@
       "gridPos": {
         "h": 8,
         "w": 4,
-        "x": 16,
+        "x": 11,
         "y": 10
       },
       "id": 24,
@@ -770,7 +933,7 @@
               "type": "count"
             }
           ],
-          "query": "powershell OR certutil OR wmic OR rundll32",
+          "query": "agent.name:($agent) AND rule.id:[100500 TO 100602]",
           "refId": "A",
           "timeField": "@timestamp"
         }
@@ -794,7 +957,7 @@
             "barAlignment": 0,
             "barWidthFactor": 0.6,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -838,8 +1001,8 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 4,
-        "x": 20,
+        "w": 5,
+        "x": 15,
         "y": 10
       },
       "id": 26,
@@ -852,13 +1015,14 @@
         },
         "tooltip": {
           "hideZeros": false,
-          "mode": "single",
+          "mode": "multi",
           "sort": "none"
         }
       },
       "pluginVersion": "12.2.0",
       "targets": [
         {
+          "alias": "PowerShell",
           "bucketAggs": [
             {
               "field": "@timestamp",
@@ -878,8 +1042,183 @@
               "type": "count"
             }
           ],
-          "query": "powershell OR certutil OR wmic",
+          "query": "agent.name:($agent) AND rule.id:(100500 OR 100501 OR 100502)",
           "refId": "A",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "CertUtil",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": "Wazuh-Alerts-1",
+          "luceneQueryType": "Lucene",
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "agent.name:($agent) AND rule.id:(100510 OR 100511 OR 100512)",
+          "refId": "B",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "BITSAdmin",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": "Wazuh-Alerts-1",
+          "luceneQueryType": "Lucene",
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "agent.name:($agent) AND rule.id:(100520 OR 100521)",
+          "refId": "C",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "WMIC",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": "Wazuh-Alerts-1",
+          "luceneQueryType": "Lucene",
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "agent.name:($agent) AND rule.id:(100530 OR 100531)",
+          "refId": "D",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "rundll32",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": "Wazuh-Alerts-1",
+          "luceneQueryType": "Lucene",
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "agent.name:($agent) AND rule.id:(100540 OR 100541)",
+          "refId": "E",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "mshta",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": "Wazuh-Alerts-1",
+          "luceneQueryType": "Lucene",
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "agent.name:($agent) AND rule.id:100550",
+          "refId": "F",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "regsvr32",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": "Wazuh-Alerts-1",
+          "luceneQueryType": "Lucene",
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "agent.name:($agent) AND rule.id:(100560 OR 100561)",
+          "refId": "G",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Correlation",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": "Wazuh-Alerts-1",
+          "luceneQueryType": "Lucene",
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "agent.name:($agent) AND rule.id:(100600 OR 100601 OR 100602)",
+          "refId": "H",
           "timeField": "@timestamp"
         }
       ],
@@ -913,7 +1252,28 @@
               "viz": false
             }
           },
-          "mappings": []
+          "mappings": [
+            {
+              "options": {
+                "BITSAdmin transfer from URL detected": {
+                  "text": "BITSAdmin Download"
+                },
+                "CertUtil download from URL detected": {
+                  "text": "CertUtil Download"
+                },
+                "Multiple LOLBin techniques detected in 5 minutes": {
+                  "text": "Multiple LOLBins"
+                },
+                "PowerShell encoded command detected": {
+                  "text": "Encoded PowerShell"
+                },
+                "WMIC process creation detected": {
+                  "text": "WMIC Execution"
+                }
+              },
+              "type": "value"
+            }
+          ]
         },
         "overrides": []
       },
@@ -926,15 +1286,18 @@
       "id": 30,
       "options": {
         "displayLabels": [
-          "percent",
-          "name"
+          "percent"
         ],
         "legend": {
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "values": [
+            "value",
+            "percent"
+          ]
         },
-        "pieType": "pie",
+        "pieType": "donut",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -954,7 +1317,7 @@
         {
           "bucketAggs": [
             {
-              "field": "rule.mitre.technique",
+              "field": "rule.description",
               "id": "2",
               "settings": {
                 "min_doc_count": "1",
@@ -965,22 +1328,47 @@
               "type": "terms"
             }
           ],
-          "datasource": "Wazuh-Alerts-1",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "Wazuh-Alerts-1"
+          },
           "metrics": [
             {
               "id": "1",
               "type": "count"
             }
           ],
-          "query": "\"Process Injection\" OR \"Windows Management Instrumentation\" OR memory OR reflection",
-          "refId": "A"
+          "query": "rule.id:(100500 OR 100502 OR 100510 OR 100520 OR 100530 OR 100600)",
+          "refId": "A",
+          "timeField": "timestamp"
         }
       ],
       "title": "Fileless Techniques",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "includeByName": {
+              "Count": true,
+              "rule.description": true
+            },
+            "indexByName": {
+              "Count": 1,
+              "rule.description": 0
+            }
+          }
+        },
+        {
+          "id": "rowsToFields",
+          "options": {
+            "fieldName": "rule.description",
+            "valueFieldName": "Count"
+          }
+        }
+      ],
       "type": "piechart"
     },
     {
-      "datasource": "Wazuh-Alerts-1",
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -1002,8 +1390,12 @@
                 "value": 0
               },
               {
+                "color": "yellow",
+                "value": 5
+              },
+              {
                 "color": "red",
-                "value": 80
+                "value": 15
               }
             ]
           }
@@ -1016,9 +1408,15 @@
             },
             "properties": [
               {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-background"
+                }
+              },
+              {
                 "id": "color",
                 "value": {
-                  "mode": "continuous-RdYlGr"
+                  "mode": "thresholds"
                 }
               }
             ]
@@ -1034,14 +1432,20 @@
       "id": 32,
       "options": {
         "cellHeight": "sm",
-        "showHeader": true
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Events"
+          }
+        ]
       },
       "pluginVersion": "12.2.0",
       "targets": [
         {
           "bucketAggs": [
             {
-              "field": "rule.mitre.id",
+              "field": "agent.name",
               "id": "2",
               "settings": {
                 "min_doc_count": "1",
@@ -1052,29 +1456,51 @@
               "type": "terms"
             },
             {
-              "field": "agent.name",
+              "field": "rule.description",
               "id": "3",
               "settings": {
                 "min_doc_count": "1",
                 "order": "desc",
                 "orderBy": "_count",
-                "size": "5"
+                "size": "10"
               },
               "type": "terms"
             }
           ],
-          "datasource": "Wazuh-Alerts-1",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "Wazuh-Alerts-1"
+          },
           "metrics": [
             {
               "id": "1",
               "type": "count"
             }
           ],
-          "query": "\"Process Injection\" OR \"WMI\" OR memory OR reflection OR registry",
-          "refId": "A"
+          "query": "rule.id:(100500 OR 100502 OR 100510 OR 100520 OR 100530 OR 100600)",
+          "refId": "A",
+          "timeField": "timestamp"
         }
       ],
       "title": "Fileless Malware by Host",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "Count": 2,
+              "agent.name": 0,
+              "rule.description": 1
+            },
+            "renameByName": {
+              "Count": "Events",
+              "agent.name": "Host",
+              "rule.description": "Detection"
+            }
+          }
+        }
+      ],
       "type": "table"
     },
     {
@@ -1089,8 +1515,12 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "yellow",
+                "color": "green",
                 "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 5
               },
               {
                 "color": "red",
@@ -1110,7 +1540,7 @@
       "id": 34,
       "options": {
         "colorMode": "background",
-        "graphMode": "none",
+        "graphMode": "area",
         "justifyMode": "center",
         "orientation": "auto",
         "percentChangeColorMode": "standard",
@@ -1147,12 +1577,12 @@
               "type": "count"
             }
           ],
-          "query": "\"Process Injection\" OR \"WMI\" OR memory OR reflection",
+          "query": "agent.name:($agent) AND (data.win.eventdata.commandLine:(*-EncodedCommand* OR *DownloadString* OR *IEX* OR *Invoke-Expression* OR *Reflection.Assembly* OR *DownloadData* OR *-ExecutionPolicy*Bypass* OR *Net.WebClient* OR *Invoke-WebRequest* OR *System.Management.Automation* OR *FromBase64String*) OR rule.mitre.id:(T1059.001 OR T1055 OR T1140 OR T1027))",
           "refId": "A",
           "timeField": "@timestamp"
         }
       ],
-      "title": "Fileless Events",
+      "title": "Fileless Malware Events",
       "type": "stat"
     },
     {
@@ -1255,7 +1685,7 @@
               "type": "count"
             }
           ],
-          "query": "\"Process Injection\" OR memory OR reflection",
+          "query": "agent.name:($agent) AND (\"Process Injection\" OR memory OR reflection)",
           "refId": "A",
           "timeField": "@timestamp"
         }
@@ -1299,8 +1729,12 @@
                 "value": 0
               },
               {
+                "color": "yellow",
+                "value": 7
+              },
+              {
                 "color": "red",
-                "value": 80
+                "value": 10
               }
             ]
           }
@@ -1309,18 +1743,100 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "avg"
+              "options": "Average rule.level"
             },
             "properties": [
               {
-                "id": "color",
+                "id": "custom.cellOptions",
                 "value": {
-                  "mode": "continuous-RdYlGr"
+                  "type": "color-background"
                 }
               },
               {
+                "id": "color",
+                "value": {
+                  "mode": "thresholds"
+                }
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
                 "id": "max",
-                "value": 10
+                "value": 15
+              },
+              {
+                "id": "displayName",
+                "value": "Risk Score"
+              },
+              {
+                "id": "custom.width",
+                "value": 120
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Alerts"
+              },
+              {
+                "id": "custom.width",
+                "value": 90
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Unique count of rule.mitre.tactic"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "MITRE Tactics"
+              },
+              {
+                "id": "custom.width",
+                "value": 130
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Unique count of rule.mitre.id"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "MITRE Techniques"
+              },
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "agent.name"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Hostname"
+              },
+              {
+                "id": "custom.width",
+                "value": 200
               }
             ]
           }
@@ -1335,7 +1851,21 @@
       "id": 40,
       "options": {
         "cellHeight": "sm",
-        "showHeader": true
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Risk Score"
+          }
+        ]
       },
       "pluginVersion": "12.2.0",
       "targets": [
@@ -1351,38 +1881,55 @@
                 "size": "15"
               },
               "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "Wazuh-Alerts-1"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
             },
             {
               "field": "rule.level",
               "id": "3",
-              "settings": {},
               "type": "avg"
             },
             {
               "field": "rule.mitre.tactic",
               "id": "4",
-              "settings": {},
               "type": "cardinality"
             },
             {
               "field": "rule.mitre.id",
               "id": "5",
-              "settings": {},
               "type": "cardinality"
             }
           ],
-          "datasource": "Wazuh-Alerts-1",
-          "metrics": [
-            {
-              "id": "1",
-              "type": "count"
-            }
-          ],
           "query": "rule.level:>=5",
-          "refId": "A"
+          "refId": "A",
+          "timeField": "timestamp"
         }
       ],
       "title": "APT Risk Score by Host",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "Average rule.level": 2,
+              "Count": 1,
+              "Unique count of rule.mitre.id": 4,
+              "Unique count of rule.mitre.tactic": 3,
+              "agent.name": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
       "type": "table"
     },
     {
@@ -1412,15 +1959,18 @@
       "id": 42,
       "options": {
         "displayLabels": [
-          "percent",
-          "name"
+          "percent"
         ],
         "legend": {
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "values": [
+            "value",
+            "percent"
+          ]
         },
-        "pieType": "pie",
+        "pieType": "donut",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -1430,8 +1980,8 @@
         },
         "sort": "desc",
         "tooltip": {
-          "hideZeros": false,
-          "mode": "all",
+          "hideZeros": true,
+          "mode": "single",
           "sort": "none"
         }
       },
@@ -1452,20 +2002,22 @@
               "type": "terms"
             }
           ],
-          "datasource": "Wazuh-Alerts-1",
-          "luceneQueryType": "Lucene",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "Wazuh-Alerts-1"
+          },
           "metrics": [
             {
               "id": "1",
               "type": "count"
             }
           ],
-          "query": "rule.mitre.tactic:(\"Persistence\" OR \"Defense Evasion\" OR \"Command and Control\" OR \"Exfiltration\") AND rule.level:[7 TO *]",
+          "query": "rule.mitre.tactic:(\"Persistence\" OR \"Defense Evasion\" OR \"Command and Control\" OR \"Exfiltration\" OR \"Lateral Movement\" OR \"Credential Access\") AND rule.level:>=10",
           "refId": "A",
-          "timeField": "@timestamp"
+          "timeField": "timestamp"
         }
       ],
-      "title": "APT Tactics (Critical)",
+      "title": "APT Tactics (Critical Alerts)",
       "transformations": [
         {
           "id": "organize",
@@ -1517,6 +2069,13 @@
         "y": 28
       },
       "id": 44,
+      "links": [
+        {
+          "targetBlank": false,
+          "title": "View APT indicator alerts",
+          "url": "/d/wazuh-mitre-advanced/wazuh-mitre-advanced?viewPanel=80&var-agent=$agent"
+        }
+      ],
       "options": {
         "colorMode": "background",
         "graphMode": "none",
@@ -1556,7 +2115,7 @@
               "type": "count"
             }
           ],
-          "query": "rule.mitre.tactic:(\"Persistence\" OR \"Defense Evasion\" OR \"Command and Control\") AND rule.level:[7 TO *]",
+          "query": "agent.name:($agent) AND rule.mitre.tactic:(\"Persistence\" OR \"Defense Evasion\" OR \"Command and Control\") AND rule.level:[7 TO *]",
           "refId": "A",
           "timeField": "@timestamp"
         }
@@ -1591,6 +2150,13 @@
         "y": 28
       },
       "id": 46,
+      "links": [
+        {
+          "targetBlank": false,
+          "title": "View lateral movement alerts",
+          "url": "/d/wazuh-mitre-advanced/wazuh-mitre-advanced?viewPanel=80&var-agent=$agent"
+        }
+      ],
       "options": {
         "colorMode": "background",
         "graphMode": "none",
@@ -1630,7 +2196,7 @@
               "type": "count"
             }
           ],
-          "query": "rule.mitre.tactic:\"Lateral Movement\" AND rule.level:[5 TO *]",
+          "query": "agent.name:($agent) AND rule.mitre.tactic:\"Lateral Movement\" AND rule.level:[5 TO *]",
           "refId": "A",
           "timeField": "@timestamp"
         }
@@ -1714,7 +2280,7 @@
               "type": "count"
             }
           ],
-          "query": "rule.mitre.tactic:\"Lateral Movement\"",
+          "query": "agent.name:($agent) AND rule.mitre.tactic:\"Lateral Movement\"",
           "refId": "A"
         }
       ],
@@ -1833,7 +2399,7 @@
               "type": "count"
             }
           ],
-          "query": "rule.mitre.tactic:(\"Persistence\" OR \"Defense Evasion\" OR \"Command and Control\" OR \"Lateral Movement\" OR \"Exfiltration\")",
+          "query": "agent.name:($agent) AND rule.mitre.tactic:(\"Persistence\" OR \"Defense Evasion\" OR \"Command and Control\" OR \"Lateral Movement\" OR \"Exfiltration\")",
           "refId": "A",
           "timeField": "@timestamp"
         }
@@ -1974,11 +2540,282 @@
               "type": "count"
             }
           ],
-          "query": "*",
+          "query": "agent.name:($agent)",
           "refId": "A"
         }
       ],
       "title": "All Detected Techniques (Detailed)",
+      "type": "table"
+    },
+    {
+      "datasource": "Wazuh-Alerts-1",
+      "description": "Per-alert view with Agent, Level, and MITRE mapping so analysts know what to investigate next.",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 8
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Technique ID"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "Open in MITRE ATT&CK",
+                    "url": "https://attack.mitre.org/techniques/${__value}/"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 55
+      },
+      "id": 80,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true
+      },
+      "pluginVersion": "12.2.0",
+      "targets": [
+        {
+          "bucketAggs": [],
+          "datasource": "Wazuh-Alerts-1",
+          "luceneQueryType": "Lucene",
+          "metrics": [
+            {
+              "id": "1",
+              "settings": {
+                "size": 500
+              },
+              "type": "raw_data"
+            }
+          ],
+          "query": "agent.name:($agent)",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "title": "Alerts with MITRE Context",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "includeByName": {
+              "@timestamp": true,
+              "agent.name": true,
+              "rule.description": true,
+              "rule.level": true,
+              "rule.mitre.id": true,
+              "rule.mitre.tactic": true,
+              "rule.mitre.technique": true
+            },
+            "indexByName": {
+              "@timestamp": 0,
+              "agent.name": 1,
+              "rule.description": 6,
+              "rule.level": 2,
+              "rule.mitre.id": 5,
+              "rule.mitre.tactic": 3,
+              "rule.mitre.technique": 4
+            },
+            "renameByName": {
+              "@timestamp": "Time",
+              "agent.name": "Agent",
+              "rule.description": "Description",
+              "rule.level": "Level",
+              "rule.mitre.id": "Technique ID",
+              "rule.mitre.tactic": "Tactic",
+              "rule.mitre.technique": "Technique"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": "Wazuh-Alerts-1",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "left",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true,
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Timestamp"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 180
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Agent Name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Agent ID"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Rule ID"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 67
+      },
+      "id": 110,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Timestamp"
+          }
+        ]
+      },
+      "pluginVersion": "12.2.0",
+      "targets": [
+        {
+          "bucketAggs": [],
+          "datasource": "Wazuh-Alerts-1",
+          "luceneQueryType": "Lucene",
+          "metrics": [
+            {
+              "id": "1",
+              "settings": {
+                "size": 500
+              },
+              "type": "raw_data"
+            }
+          ],
+          "query": "agent.name:($agent)",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "title": "Alert Details - Agent, ID, Technique & Tactic",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "@timestamp": 0,
+              "agent.id": 2,
+              "agent.name": 1,
+              "rule.description": 4,
+              "rule.id": 3,
+              "rule.level": 7,
+              "rule.mitre.tactic": 6,
+              "rule.mitre.technique": 5
+            },
+            "renameByName": {
+              "@timestamp": "Timestamp",
+              "agent.id": "Agent ID",
+              "agent.name": "Agent Name",
+              "rule.description": "Description",
+              "rule.id": "Rule ID",
+              "rule.level": "Severity Level",
+              "rule.mitre.tactic": "MITRE Tactic",
+              "rule.mitre.technique": "MITRE Technique"
+            }
+          }
+        }
+      ],
       "type": "table"
     }
   ],
@@ -1994,15 +2831,32 @@
     "fileless"
   ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": "*",
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "Wazuh-Alerts-1",
+        "includeAll": true,
+        "label": "Agent",
+        "multi": true,
+        "name": "agent",
+        "options": [],
+        "query": "{\"find\": \"terms\", \"field\": \"agent.name.keyword\", \"size\": 100}",
+        "refresh": 2,
+        "type": "query"
+      }
+    ]
   },
   "time": {
     "from": "now-1w/w",
-    "to": "now-1w/w"
+    "to": "now"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Wazuh - MITRE ATT&CK Advanced Threat Analysis",
+  "title": "Wazuh - MITRE ATT&CK Advanced Threat Analysis (Agent-aware)",
   "uid": "wazuh-mitre-advanced",
-  "version": 15
+  "version": 48
 }
