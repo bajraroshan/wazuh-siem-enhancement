@@ -1,0 +1,620 @@
+{
+  "T1189": {
+    "actions": ["Browser Sandbox", "Execution Isolation"],
+    "descriptions": ["Isolate browser execution environment", "Prevent drive-by compromise"],
+    "implementations": ["Browser isolation platforms", "Virtual browsing"],
+    "priority": "High"
+  },
+  "T1190": {
+    "actions": ["Application Hardening", "Patch Management"],
+    "descriptions": ["Patch public-facing applications", "Harden web services"],
+    "implementations": ["Automated patch management", "Web application firewalls"],
+    "priority": "Critical"
+  },
+  "T1133": {
+    "actions": ["Inbound Traffic Filtering", "VPN Security"],
+    "descriptions": ["Filter external service access", "Implement MFA for VPN"],
+    "implementations": ["Perimeter firewall", "VPN with certificate authentication"],
+    "priority": "High"
+  },
+  "T1200": {
+    "actions": ["Hardware Verification", "Supply Chain Security"],
+    "descriptions": ["Verify hardware integrity", "Validate hardware supply chain"],
+    "implementations": ["Supply chain verification", "Hardware attestation"],
+    "priority": "Medium"
+  },
+  "T1566": {
+    "actions": ["Email Analysis", "Email Filtering"],
+    "descriptions": ["Filter phishing emails", "Analyze suspicious attachments"],
+    "implementations": ["Email gateway sandboxing", "DMARC/SPF/DKIM"],
+    "priority": "High"
+  },
+  "T1566.001": {
+    "actions": ["Email Analysis", "File Analysis"],
+    "descriptions": ["Detect spearphishing attachments", "Sandbox email attachments"],
+    "implementations": ["Attachment sandboxing", "Email security gateway"],
+    "priority": "High"
+  },
+  "T1566.002": {
+    "actions": ["URL Analysis", "Link Analysis"],
+    "descriptions": ["Analyze spearphishing links", "URL reputation checking"],
+    "implementations": ["URL reputation filtering", "Safe links rewriting"],
+    "priority": "High"
+  },
+  "T1566.003": {
+    "actions": ["Email Analysis", "Cloud Email Monitoring"],
+    "descriptions": ["Monitor spearphishing via service", "OAuth abuse detection"],
+    "implementations": ["Monitor cloud email APIs", "OAuth consent monitoring"],
+    "priority": "Medium"
+  },
+  "T1091": {
+    "actions": ["Device Code Authorization", "Removable Media Control"],
+    "descriptions": ["Control removable media access", "USB device whitelisting"],
+    "implementations": ["USB device control", "Removable media scanning"],
+    "priority": "Medium"
+  },
+  "T1195": {
+    "actions": ["Software Update Validation", "Supply Chain Security"],
+    "descriptions": ["Verify software supply chain", "Vendor validation"],
+    "implementations": ["Vendor validation processes", "Code signing verification"],
+    "priority": "High"
+  },
+  "T1195.001": {
+    "actions": ["Software Update Validation", "Code Signing"],
+    "descriptions": ["Verify software supply chain compromises", "Validate code signatures"],
+    "implementations": ["Code signing verification", "Binary reputation analysis"],
+    "priority": "High"
+  },
+  "T1195.002": {
+    "actions": ["Dependency Analysis", "Library Scanning"],
+    "descriptions": ["Verify third-party dependencies", "Scan open-source libraries"],
+    "implementations": ["Software composition analysis", "Dependency scanning tools"],
+    "priority": "Medium"
+  },
+  "T1195.003": {
+    "actions": ["Hardware Verification", "Hardware Attestation"],
+    "descriptions": ["Verify hardware supply chain", "Trusted platform modules"],
+    "implementations": ["Hardware attestation", "Secure boot verification"],
+    "priority": "Medium"
+  },
+  "T1199": {
+    "actions": ["Third-Party Monitoring", "Partner Access Control"],
+    "descriptions": ["Monitor trusted relationships", "Audit vendor access"],
+    "implementations": ["Audit partner access logs", "Vendor risk assessment"],
+    "priority": "High"
+  },
+  "T1078": {
+    "actions": ["User Account Monitoring", "Account Activity Baselining"],
+    "descriptions": ["Monitor valid account usage", "Baseline user behavior"],
+    "implementations": ["User behavior analytics", "Enable Event 4624/4625"],
+    "priority": "Medium"
+  },
+  "T1078.001": {
+    "actions": ["Credential Access Monitoring", "Default Account Management"],
+    "descriptions": ["Monitor default account usage", "Disable default accounts"],
+    "implementations": ["Disable default accounts", "Default password policies"],
+    "priority": "High"
+  },
+  "T1078.002": {
+    "actions": ["Domain Account Monitoring", "AD Auditing"],
+    "descriptions": ["Monitor domain account activity", "Track privileged access"],
+    "implementations": ["Enable Event 4624/4625", "Domain controller logging"],
+    "priority": "High"
+  },
+  "T1078.003": {
+    "actions": ["Local Account Monitoring", "Local Admin Tracking"],
+    "descriptions": ["Monitor local account usage", "Track local administrator activity"],
+    "implementations": ["Local admin usage logs", "LAPS implementation"],
+    "priority": "Medium"
+  },
+  "T1078.004": {
+    "actions": ["Cloud Account Monitoring", "IAM Auditing"],
+    "descriptions": ["Monitor cloud account activity", "Track IAM changes"],
+    "implementations": ["Enable cloud audit logs", "CloudTrail/Azure Monitor"],
+    "priority": "High"
+  },
+  "T1203": {
+    "actions": ["Application Hardening", "Exploit Prevention"],
+    "descriptions": ["Patch client application exploits", "Deploy exploit mitigation"],
+    "implementations": ["Automated patching", "EMET/Exploit Guard"],
+    "priority": "Critical"
+  },
+  "T1559": {
+    "actions": ["IPC Analysis", "Inter-Process Communication Monitoring"],
+    "descriptions": ["Monitor IPC mechanisms", "Track COM/DCOM usage"],
+    "implementations": ["Track COM/DCOM", "Monitor named pipes"],
+    "priority": "Medium"
+  },
+  "T1559.001": {
+    "actions": ["IPC Analysis", "COM Monitoring"],
+    "descriptions": ["Monitor Component Object Model", "DCOM auditing"],
+    "implementations": ["Enable DCOM auditing", "Track COM object creation"],
+    "priority": "Medium"
+  },
+  "T1559.002": {
+    "actions": ["IPC Analysis", "DDE Monitoring"],
+    "descriptions": ["Monitor Dynamic Data Exchange", "Office DDE detection"],
+    "implementations": ["Track DDE connections", "Disable Office DDE"],
+    "priority": "Medium"
+  },
+  "T1106": {
+    "actions": ["System Call Analysis", "Native API Monitoring"],
+    "descriptions": ["Monitor native API calls", "Detect direct syscalls"],
+    "implementations": ["Deploy EDR platforms", "Enable API hooking"],
+    "priority": "High"
+  },
+  "T1053": {
+    "actions": ["Scheduled Job Analysis", "Task Monitoring"],
+    "descriptions": ["Monitor scheduled tasks/jobs", "Track cron and at jobs"],
+    "implementations": ["Enable Event 4698-4702", "Monitor /etc/crontab"],
+    "priority": "Medium"
+  },
+  "T1053.002": {
+    "actions": ["Scheduled Job Analysis", "AT Command Monitoring"],
+    "descriptions": ["Monitor AT command usage", "Legacy task scheduling"],
+    "implementations": ["Track at.exe execution", "Deprecated on modern systems"],
+    "priority": "Low"
+  },
+  "T1053.003": {
+    "actions": ["Scheduled Job Analysis", "Cron Monitoring"],
+    "descriptions": ["Monitor Linux/Unix cron jobs", "Track crontab modifications"],
+    "implementations": ["Monitor /etc/crontab", "User crontab auditing"],
+    "priority": "Medium"
+  },
+  "T1053.005": {
+    "actions": ["Scheduled Job Analysis", "Windows Task Monitoring"],
+    "descriptions": ["Monitor Windows scheduled tasks", "Task scheduler auditing"],
+    "implementations": ["Enable Event 4698", "Task Scheduler logs"],
+    "priority": "High"
+  },
+  "T1053.006": {
+    "actions": ["Scheduled Job Analysis", "Systemd Timer Monitoring"],
+    "descriptions": ["Monitor systemd timers", "Linux service timers"],
+    "implementations": ["Track systemd timers", "journalctl monitoring"],
+    "priority": "Medium"
+  },
+  "T1129": {
+    "actions": ["Module Load Analysis", "DLL Loading Monitoring"],
+    "descriptions": ["Monitor shared library loading", "Track DLL loads"],
+    "implementations": ["Enable Sysmon Event 7", "DLL load auditing"],
+    "priority": "Medium"
+  },
+  "T1072": {
+    "actions": ["Software Update Control", "Deployment Tool Monitoring"],
+    "descriptions": ["Control third-party software deployment", "Monitor update mechanisms"],
+    "implementations": ["Restrict deployment tools", "SCCM/PDQ Deploy monitoring"],
+    "priority": "Medium"
+  },
+  "T1569": {
+    "actions": ["Service Binary Verification", "System Service Monitoring"],
+    "descriptions": ["Verify system service binaries", "Monitor service execution"],
+    "implementations": ["Monitor service execution", "Service binary signing"],
+    "priority": "Medium"
+  },
+  "T1569.001": {
+    "actions": ["Service Binary Verification", "Launchctl Monitoring"],
+    "descriptions": ["Monitor macOS launchctl", "LaunchDaemons tracking"],
+    "implementations": ["Track launchd jobs", "LaunchAgent monitoring"],
+    "priority": "Medium"
+  },
+  "T1569.002": {
+    "actions": ["Service Binary Verification", "Windows Service Monitoring"],
+    "descriptions": ["Monitor Windows service creation", "Service installation tracking"],
+    "implementations": ["Enable Event 7045", "sc.exe monitoring"],
+    "priority": "High"
+  },
+  "T1204": {
+    "actions": ["User Training", "Security Awareness"],
+    "descriptions": ["Train users on threats", "Phishing simulation"],
+    "implementations": ["Phishing awareness training", "Security education programs"],
+    "priority": "High"
+  },
+  "T1204.001": {
+    "actions": ["User Training", "Link Safety Education"],
+    "descriptions": ["Prevent malicious link clicks", "URL awareness"],
+    "implementations": ["User awareness training", "Simulated phishing"],
+    "priority": "High"
+  },
+  "T1204.002": {
+    "actions": ["User Training", "File Execution Prevention"],
+    "descriptions": ["Prevent malicious file execution", "File type awareness"],
+    "implementations": ["File type restrictions", "Attachment policies"],
+    "priority": "High"
+  },
+  "T1047": {
+    "actions": ["RPC Traffic Analysis", "WMI Monitoring"],
+    "descriptions": ["Monitor Windows Management Instrumentation", "WMI event tracking"],
+    "implementations": ["Enable WMI-Activity logs", "Event 5857-5861"],
+    "priority": "High"
+  },
+  "T1059": {
+    "actions": ["Command Interpreter Monitoring", "Script Execution Analysis"],
+    "descriptions": ["Monitor command-line interpreters", "Track script execution"],
+    "implementations": ["Command line logging", "Script block logging"],
+    "priority": "High"
+  },
+  "T1059.001": {
+    "actions": ["PowerShell Logging", "Script Execution Monitoring"],
+    "descriptions": ["Enable PowerShell logging", "Monitor PS script blocks"],
+    "implementations": ["Enable Event 4104", "PowerShell transcription"],
+    "priority": "High"
+  },
+  "T1059.002": {
+    "actions": ["AppleScript Monitoring", "macOS Script Tracking"],
+    "descriptions": ["Monitor AppleScript execution", "Track osascript usage"],
+    "implementations": ["Track osascript", "Application event monitoring"],
+    "priority": "Medium"
+  },
+  "T1059.003": {
+    "actions": ["Windows Command Shell Monitoring", "CMD Tracking"],
+    "descriptions": ["Monitor cmd.exe execution", "Command shell auditing"],
+    "implementations": ["Command line auditing", "Process creation logging"],
+    "priority": "Medium"
+  },
+  "T1059.004": {
+    "actions": ["Unix Shell Monitoring", "Bash Tracking"],
+    "descriptions": ["Monitor bash/sh execution", "Shell command logging"],
+    "implementations": ["Shell logging", "Bash history monitoring"],
+    "priority": "Medium"
+  },
+  "T1059.005": {
+    "actions": ["VBScript Monitoring", "WSH Tracking"],
+    "descriptions": ["Monitor VBScript execution", "Windows Script Host tracking"],
+    "implementations": ["Track cscript/wscript", "Script file monitoring"],
+    "priority": "Medium"
+  },
+  "T1059.006": {
+    "actions": ["Python Monitoring", "Interpreter Tracking"],
+    "descriptions": ["Monitor Python execution", "Track python.exe usage"],
+    "implementations": ["Track python.exe", "Python script monitoring"],
+    "priority": "Medium"
+  },
+  "T1059.007": {
+    "actions": ["JavaScript Monitoring", "Node.js Tracking"],
+    "descriptions": ["Monitor JavaScript execution", "Track Node.js usage"],
+    "implementations": ["Track node.exe", "JS runtime monitoring"],
+    "priority": "Medium"
+  },
+  "T1059.008": {
+    "actions": ["Network Device CLI Monitoring", "Router Command Tracking"],
+    "descriptions": ["Monitor network device CLI", "Track router/switch commands"],
+    "implementations": ["Device logging", "TACACS+ auditing"],
+    "priority": "Medium"
+  },
+  "T1087": {
+    "actions": ["Account Discovery Monitoring", "User Enumeration Detection"],
+    "descriptions": ["Monitor account discovery activities", "Track user enumeration"],
+    "implementations": ["Monitor net user", "LDAP query tracking"],
+    "priority": "Medium"
+  },
+  "T1087.001": {
+    "actions": ["Local Account Discovery Monitoring", "Local User Enumeration"],
+    "descriptions": ["Monitor local account enumeration", "Track local user queries"],
+    "implementations": ["Track net user", "SAM query monitoring"],
+    "priority": "Medium"
+  },
+  "T1087.002": {
+    "actions": ["Domain Account Discovery Monitoring", "AD Enumeration Detection"],
+    "descriptions": ["Monitor domain account enumeration", "Active Directory queries"],
+    "implementations": ["LDAP query tracking", "net user /domain monitoring"],
+    "priority": "Medium"
+  },
+  "T1087.003": {
+    "actions": ["Email Account Discovery Monitoring", "Email Enumeration Detection"],
+    "descriptions": ["Monitor email account discovery", "Track email API queries"],
+    "implementations": ["Email API query tracking", "GAL enumeration detection"],
+    "priority": "Low"
+  },
+  "T1087.004": {
+    "actions": ["Cloud Account Discovery Monitoring", "Cloud User Enumeration"],
+    "descriptions": ["Monitor cloud account enumeration", "Track cloud API calls"],
+    "implementations": ["Cloud API call monitoring", "IAM list operations"],
+    "priority": "Medium"
+  },
+  "T1098": {
+    "actions": ["User Account Monitoring", "Account Modification Detection"],
+    "descriptions": ["Monitor account modifications", "Track user account changes"],
+    "implementations": ["Enable Event 4738", "Account change auditing"],
+    "priority": "High"
+  },
+  "T1098.001": {
+    "actions": ["Cloud Credentials Monitoring", "IAM Modification Detection"],
+    "descriptions": ["Monitor cloud credential changes", "Track IAM modifications"],
+    "implementations": ["IAM policy change alerts", "Access key monitoring"],
+    "priority": "High"
+  },
+  "T1098.002": {
+    "actions": ["Email Delegate Monitoring", "Mailbox Permission Tracking"],
+    "descriptions": ["Monitor email delegation changes", "Track mailbox permissions"],
+    "implementations": ["Mailbox permission auditing", "Delegate access monitoring"],
+    "priority": "Medium"
+  },
+  "T1098.003": {
+    "actions": ["Cloud Roles Monitoring", "RBAC Change Detection"],
+    "descriptions": ["Monitor cloud role assignments", "Track RBAC modifications"],
+    "implementations": ["Role binding change alerts", "IAM role monitoring"],
+    "priority": "High"
+  },
+  "T1098.004": {
+    "actions": ["SSH Keys Monitoring", "Public Key Management"],
+    "descriptions": ["Monitor SSH authorized keys", "Track public key additions"],
+    "implementations": ["Audit authorized_keys file", "SSH key change detection"],
+    "priority": "High"
+  },
+  "T1197": {
+    "actions": ["BITS Monitoring", "Background Transfer Detection"],
+    "descriptions": ["Monitor BITS job creation", "Track background transfers"],
+    "implementations": ["BITS-Client event logs", "bitsadmin.exe monitoring"],
+    "priority": "Medium"
+  },
+  "T1140": {
+    "actions": ["File Analysis", "Deobfuscation Detection"],
+    "descriptions": ["Analyze deobfuscation activities", "Detect decode operations"],
+    "implementations": ["Monitor certutil -decode", "Base64 decode detection"],
+    "priority": "Medium"
+  },
+  "T1105": {
+    "actions": ["Ingress Tool Transfer Detection", "File Download Monitoring"],
+    "descriptions": ["Monitor file downloads/uploads", "Track tool transfers"],
+    "implementations": ["Network file transfer monitoring", "Monitor certutil/curl/wget"],
+    "priority": "High"
+  },
+  "T1127": {
+    "actions": ["Trusted Developer Utilities Monitoring", "Build Tool Tracking"],
+    "descriptions": ["Monitor trusted developer tool abuse", "Track build utilities"],
+    "implementations": ["MSBuild.exe monitoring", "Developer tool tracking"],
+    "priority": "Medium"
+  },
+  "T1127.001": {
+    "actions": ["Process Spawn Analysis", "MSBuild Monitoring"],
+    "descriptions": ["Monitor MSBuild.exe execution", "Track inline code execution"],
+    "implementations": ["MSBuild.exe process monitoring", ".csproj file analysis"],
+    "priority": "Low"
+  },
+  "T1218": {
+    "actions": ["Process Monitoring", "LOLBin Detection"],
+    "descriptions": ["Monitor signed binary proxy execution", "Track LOLBin abuse"],
+    "implementations": ["Track LOLBin usage", "LOLBAS monitoring"],
+    "priority": "High"
+  },
+  "T1218.005": {
+    "actions": ["Process Monitoring", "MSHTA Detection"],
+    "descriptions": ["Monitor mshta.exe execution", "Track HTA file execution"],
+    "implementations": ["Block mshta remote execution", "HTA file analysis"],
+    "priority": "High"
+  },
+  "T1218.010": {
+    "actions": ["Process Monitoring", "Regsvr32 Detection"],
+    "descriptions": ["Monitor regsvr32.exe abuse", "Track scriptlet execution"],
+    "implementations": ["Block remote scriptlets", "COM object validation"],
+    "priority": "Medium"
+  },
+  "T1218.011": {
+    "actions": ["Process Monitoring", "Rundll32 Detection"],
+    "descriptions": ["Monitor rundll32.exe execution", "Track DLL proxy execution"],
+    "implementations": ["Restrict DLL loading", "Rundll32 parameter analysis"],
+    "priority": "Medium"
+  },
+  "T1055": {
+    "actions": ["Process Injection Detection", "Memory Analysis"],
+    "descriptions": ["Detect process injection techniques", "Monitor memory manipulation"],
+    "implementations": ["Enable Sysmon Event 8", "EDR behavioral detection"],
+    "priority": "Critical"
+  },
+  "T1055.001": {
+    "actions": ["Process Injection Detection", "DLL Injection Monitoring"],
+    "descriptions": ["Monitor DLL injection", "Track CreateRemoteThread"],
+    "implementations": ["CreateRemoteThread detection", "DLL injection monitoring"],
+    "priority": "Critical"
+  },
+  "T1055.002": {
+    "actions": ["Process Injection Detection", "PE Injection Monitoring"],
+    "descriptions": ["Monitor portable executable injection", "Track reflective loading"],
+    "implementations": ["PE in memory detection", "Memory scanning"],
+    "priority": "Critical"
+  },
+  "T1055.003": {
+    "actions": ["Process Injection Detection", "Thread Hijacking Monitoring"],
+    "descriptions": ["Monitor thread execution hijacking", "Track SetThreadContext"],
+    "implementations": ["SetThreadContext detection", "Thread manipulation monitoring"],
+    "priority": "High"
+  },
+  "T1055.004": {
+    "actions": ["Process Injection Detection", "APC Injection Monitoring"],
+    "descriptions": ["Monitor asynchronous procedure call injection", "Track QueueUserAPC"],
+    "implementations": ["QueueUserAPC detection", "APC queue monitoring"],
+    "priority": "High"
+  },
+  "T1055.012": {
+    "actions": ["Process Injection Detection", "Process Hollowing Detection"],
+    "descriptions": ["Monitor process hollowing", "Detect process unmapping"],
+    "implementations": ["Process unmapping detection", "Memory section analysis"],
+    "priority": "Critical"
+  },
+  "T1003": {
+    "actions": ["Credential Dumping Detection", "LSASS Protection"],
+    "descriptions": ["Detect credential dumping", "Protect LSASS memory"],
+    "implementations": ["Enable LSA protection", "Credential Guard"],
+    "priority": "Critical"
+  },
+  "T1003.001": {
+    "actions": ["Credential Dumping Detection", "LSASS Memory Protection"],
+    "descriptions": ["Detect LSASS memory access", "Monitor Mimikatz-like activity"],
+    "implementations": ["LSA protection", "Protected Process Light"],
+    "priority": "Critical"
+  },
+  "T1003.002": {
+    "actions": ["Credential Dumping Detection", "SAM Protection"],
+    "descriptions": ["Detect SAM database access", "Monitor registry dumps"],
+    "implementations": ["SAM registry access monitoring", "Registry hive protection"],
+    "priority": "Critical"
+  },
+  "T1003.003": {
+    "actions": ["Credential Dumping Detection", "NTDS Protection"],
+    "descriptions": ["Detect NTDS.dit access", "Monitor ntdsutil abuse"],
+    "implementations": ["ntds.dit access monitoring", "Volume shadow copy detection"],
+    "priority": "Critical"
+  },
+  "T1003.006": {
+    "actions": ["Credential Dumping Detection", "DCSync Detection"],
+    "descriptions": ["Detect DCSync attacks", "Monitor replication requests"],
+    "implementations": ["Event 4662 replication monitoring", "Abnormal replication detection"],
+    "priority": "Critical"
+  },
+  "T1110": {
+    "actions": ["Account Lockout Policy", "Brute Force Prevention"],
+    "descriptions": ["Prevent brute force attacks", "Account lockout threshold"],
+    "implementations": ["Set lockout threshold", "Monitor Event 4625"],
+    "priority": "High"
+  },
+  "T1110.001": {
+    "actions": ["Account Lockout Policy", "Password Guessing Prevention"],
+    "descriptions": ["Prevent password guessing", "Monitor failed logins"],
+    "implementations": ["Event 4625 monitoring", "Rate limiting"],
+    "priority": "High"
+  },
+  "T1110.002": {
+    "actions": ["Account Lockout Policy", "Password Cracking Prevention"],
+    "descriptions": ["Prevent offline cracking", "Strong password enforcement"],
+    "implementations": ["Strong password policies", "Hash protection"],
+    "priority": "High"
+  },
+  "T1110.003": {
+    "actions": ["Account Lockout Policy", "Password Spray Detection"],
+    "descriptions": ["Detect password spraying", "Monitor distributed login attempts"],
+    "implementations": ["Distributed login monitoring", "Spray pattern detection"],
+    "priority": "High"
+  },
+  "T1021": {
+    "actions": ["Remote Services Monitoring", "Remote Access Detection"],
+    "descriptions": ["Monitor remote service usage", "Track lateral movement"],
+    "implementations": ["Event 4624 Type 3/10", "Remote connection logging"],
+    "priority": "High"
+  },
+  "T1021.001": {
+    "actions": ["Remote Services Monitoring", "RDP Monitoring"],
+    "descriptions": ["Monitor Remote Desktop Protocol", "Track RDP sessions"],
+    "implementations": ["RDP logging Event 1149", "TerminalServices-LocalSessionManager"],
+    "priority": "High"
+  },
+  "T1021.002": {
+    "actions": ["Remote Services Monitoring", "SMB Monitoring"],
+    "descriptions": ["Monitor SMB/Windows Admin Shares", "Track admin share access"],
+    "implementations": ["Admin share access logging", "Event 5140"],
+    "priority": "High"
+  },
+  "T1021.004": {
+    "actions": ["Remote Services Monitoring", "SSH Monitoring"],
+    "descriptions": ["Monitor SSH connections", "Track SSH sessions"],
+    "implementations": ["SSH logging", "/var/log/auth.log monitoring"],
+    "priority": "Medium"
+  },
+  "T1021.006": {
+    "actions": ["Remote Services Monitoring", "WinRM Monitoring"],
+    "descriptions": ["Monitor Windows Remote Management", "Track WinRM usage"],
+    "implementations": ["WinRM logging", "PowerShell remoting detection"],
+    "priority": "Medium"
+  },
+  "T1562": {
+    "actions": ["Security Tool Monitoring", "Defense Impairment Detection"],
+    "descriptions": ["Detect security tool tampering", "Monitor defense disablement"],
+    "implementations": ["Security tool service monitoring", "Configuration change detection"],
+    "priority": "Critical"
+  },
+  "T1562.001": {
+    "actions": ["Security Tool Monitoring", "Tool Disablement Detection"],
+    "descriptions": ["Detect antivirus/EDR disablement", "Monitor security service changes"],
+    "implementations": ["AV/EDR service monitoring", "Event 7036 for services"],
+    "priority": "Critical"
+  },
+  "T1562.002": {
+    "actions": ["Security Tool Monitoring", "Log Disablement Detection"],
+    "descriptions": ["Detect event log disablement", "Monitor logging service tampering"],
+    "implementations": ["Event Log service monitoring", "Event 1100/1102"],
+    "priority": "Critical"
+  },
+  "T1562.004": {
+    "actions": ["Security Tool Monitoring", "Firewall Modification Detection"],
+    "descriptions": ["Detect firewall rule modifications", "Monitor firewall disablement"],
+    "implementations": ["Firewall rule change monitoring", "Event 2004/2005"],
+    "priority": "High"
+  },
+  "T1070": {
+    "actions": ["File Analysis", "Indicator Removal Detection"],
+    "descriptions": ["Detect indicator removal activities", "Monitor evidence tampering"],
+    "implementations": ["Log clearing detection", "File deletion monitoring"],
+    "priority": "High"
+  },
+  "T1070.001": {
+    "actions": ["File Analysis", "Log Clearing Detection"],
+    "descriptions": ["Detect Windows event log clearing", "Monitor log deletion"],
+    "implementations": ["Enable Event 1102", "wevtutil usage detection"],
+    "priority": "Critical"
+  },
+  "T1070.004": {
+    "actions": ["File Analysis", "File Deletion Monitoring"],
+    "descriptions": ["Detect malicious file deletion", "Track file removal"],
+    "implementations": ["File deletion auditing", "Sysmon Event 23"],
+    "priority": "Medium"
+  },
+  "T1071": {
+    "actions": ["Network Traffic Analysis", "Protocol Monitoring"],
+    "descriptions": ["Monitor application layer protocols", "Detect C2 communication"],
+    "implementations": ["Protocol inspection", "Deep packet inspection"],
+    "priority": "High"
+  },
+  "T1071.001": {
+    "actions": ["Network Traffic Analysis", "Web Protocol Monitoring"],
+    "descriptions": ["Monitor HTTP/HTTPS traffic", "Detect web-based C2"],
+    "implementations": ["HTTP/HTTPS inspection", "Web proxy logging"],
+    "priority": "High"
+  },
+  "T1071.004": {
+    "actions": ["DNS Monitoring", "DNS Traffic Analysis"],
+    "descriptions": ["Monitor DNS queries", "Detect DNS tunneling"],
+    "implementations": ["DNS filtering", "DNS query logging"],
+    "priority": "High"
+  },
+  "T1558": {
+    "actions": ["Kerberos Monitoring", "Ticket Analysis"],
+    "descriptions": ["Monitor Kerberos ticket abuse", "Detect Golden/Silver tickets"],
+    "implementations": ["Event 4768/4769 monitoring", "Ticket lifetime analysis"],
+    "priority": "Critical"
+  },
+  "T1558.001": {
+    "actions": ["Kerberos Monitoring", "Golden Ticket Detection"],
+    "descriptions": ["Detect Golden Ticket attacks", "Monitor KRBTGT usage"],
+    "implementations": ["KRBTGT password rotation", "Ticket anomaly detection"],
+    "priority": "Critical"
+  },
+  "T1558.002": {
+    "actions": ["Kerberos Monitoring", "Silver Ticket Detection"],
+    "descriptions": ["Detect Silver Ticket attacks", "Monitor service ticket abuse"],
+    "implementations": ["Event 4769 monitoring", "Service ticket validation"],
+    "priority": "Critical"
+  },
+  "T1558.003": {
+    "actions": ["Kerberos Monitoring", "Kerberoasting Detection"],
+    "descriptions": ["Detect Kerberoasting attacks", "Monitor TGS requests"],
+    "implementations": ["Event 4769 RC4 monitoring", "Service ticket request patterns"],
+    "priority": "High"
+  },
+  "T1485": {
+    "actions": ["Backup Recovery", "Data Destruction Prevention"],
+    "descriptions": ["Protect against data destruction", "Implement backup strategy"],
+    "implementations": ["Backup strategy", "Offline backups", "Immutable storage"],
+    "priority": "Critical"
+  },
+  "T1486": {
+    "actions": ["Backup Recovery", "Ransomware Protection"],
+    "descriptions": ["Protect against ransomware encryption", "Anti-ransomware controls"],
+    "implementations": ["Anti-ransomware solutions", "File integrity monitoring"],
+    "priority": "Critical"
+  },
+  "T1490": {
+    "actions": ["Security Tool Monitoring", "Recovery Inhibition Prevention"],
+    "descriptions": ["Prevent recovery tool disablement", "Protect backup systems"],
+    "implementations": ["Protect recovery tools", "Shadow copy monitoring"],
+    "priority": "Critical"
+  }
+}
