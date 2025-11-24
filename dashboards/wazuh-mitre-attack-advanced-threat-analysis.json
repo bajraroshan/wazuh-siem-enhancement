@@ -18,16 +18,41 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 0,
+  "id": 13,
   "links": [],
   "panels": [
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# 🛡️ Wazuh ATT&CK Advanced Threat Analysis with D3FEND Response Framework\n\n**Dashboard Purpose:** Unified detection and response dashboard mapping adversary techniques (MITRE ATT&CK) to defensive countermeasures (MITRE D3FEND). This dashboard integrates 26 custom LOLBin detection rules with D3FEND-informed response guidance, providing analysts with immediate actionable intelligence.\n\n**Key Features:** ATT&CK Tactic Distribution | LOLBin Behavioral Detection | APT Risk Scoring | Lateral Movement Tracking | D3FEND Countermeasure Reference\n\n**Navigation:** Use sections below to investigate threats (Panels 1-50) and access defensive guidance (Panels 60-63). All MITRE ATT&CK technique IDs are clickable and link to official documentation.\n\n---",
+        "mode": "markdown"
+      },
+      "pluginVersion": "12.2.0",
+      "title": "",
+      "type": "text"
+    },
     {
       "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 0
+        "y": 3
       },
       "id": 100,
       "panels": [],
@@ -56,7 +81,7 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 1
+        "y": 4
       },
       "id": 2,
       "options": {
@@ -179,7 +204,7 @@
         "h": 8,
         "w": 6,
         "x": 6,
-        "y": 1
+        "y": 4
       },
       "id": 4,
       "options": {
@@ -281,7 +306,7 @@
         "h": 4,
         "w": 3,
         "x": 12,
-        "y": 1
+        "y": 4
       },
       "id": 12,
       "links": [
@@ -362,7 +387,7 @@
         "h": 4,
         "w": 3,
         "x": 15,
-        "y": 1
+        "y": 4
       },
       "id": 14,
       "links": [
@@ -444,7 +469,7 @@
         "h": 4,
         "w": 3,
         "x": 18,
-        "y": 1
+        "y": 4
       },
       "id": 18,
       "links": [
@@ -507,7 +532,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 9
+        "y": 12
       },
       "id": 101,
       "panels": [],
@@ -536,7 +561,7 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 10
+        "y": 13
       },
       "id": 20,
       "options": {
@@ -806,13 +831,26 @@
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "rule.description"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 424
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
-        "w": 5,
+        "w": 10,
         "x": 6,
-        "y": 10
+        "y": 13
       },
       "id": 22,
       "options": {
@@ -890,8 +928,8 @@
       "gridPos": {
         "h": 8,
         "w": 4,
-        "x": 11,
-        "y": 10
+        "x": 16,
+        "y": 13
       },
       "id": 24,
       "options": {
@@ -1001,9 +1039,9 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 5,
-        "x": 15,
-        "y": 10
+        "w": 3,
+        "x": 20,
+        "y": 13
       },
       "id": 26,
       "options": {
@@ -1231,7 +1269,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 18
+        "y": 21
       },
       "id": 102,
       "panels": [],
@@ -1281,7 +1319,7 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 19
+        "y": 22
       },
       "id": 30,
       "options": {
@@ -1427,7 +1465,7 @@
         "h": 8,
         "w": 10,
         "x": 6,
-        "y": 19
+        "y": 22
       },
       "id": 32,
       "options": {
@@ -1535,7 +1573,7 @@
         "h": 8,
         "w": 4,
         "x": 16,
-        "y": 19
+        "y": 22
       },
       "id": 34,
       "options": {
@@ -1647,7 +1685,7 @@
         "h": 8,
         "w": 4,
         "x": 20,
-        "y": 19
+        "y": 22
       },
       "id": 36,
       "options": {
@@ -1699,7 +1737,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 30
       },
       "id": 103,
       "panels": [],
@@ -1846,7 +1884,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 28
+        "y": 31
       },
       "id": 40,
       "options": {
@@ -1954,7 +1992,7 @@
         "h": 8,
         "w": 6,
         "x": 12,
-        "y": 28
+        "y": 31
       },
       "id": 42,
       "options": {
@@ -2066,7 +2104,7 @@
         "h": 8,
         "w": 3,
         "x": 18,
-        "y": 28
+        "y": 31
       },
       "id": 44,
       "links": [
@@ -2147,7 +2185,7 @@
         "h": 8,
         "w": 3,
         "x": 21,
-        "y": 28
+        "y": 31
       },
       "id": 46,
       "links": [
@@ -2239,7 +2277,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 36
+        "y": 39
       },
       "id": 48,
       "options": {
@@ -2349,7 +2387,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 36
+        "y": 39
       },
       "id": 50,
       "options": {
@@ -2413,11 +2451,11 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 44
+        "y": 47
       },
       "id": 104,
       "panels": [],
-      "title": "Threat Intelligence & Recommendations",
+      "title": "🛡️ MITRE D3FEND Countermeasures & Threat Intelligence",
       "type": "row"
     },
     {
@@ -2426,10 +2464,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 10,
+        "h": 25,
         "w": 12,
         "x": 0,
-        "y": 45
+        "y": 48
       },
       "id": 60,
       "options": {
@@ -2438,12 +2476,344 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "# 🔴 Critical Threats Detected\n\n## LOLBins Activity\n- **PowerShell abuse**: Monitor encoded commands and download strings\n- **Certutil misuse**: Check for unauthorized certificate/file downloads\n- **Action**: Implement application whitelisting and script logging\n\n## Fileless Malware\n- **Process Injection**: Detected code injection attempts\n- **WMI Abuse**: Fileless persistence via WMI\n- **Action**: Enable Sysmon for advanced process monitoring\n\n## APT Indicators\n- **Multi-stage attacks**: Hosts with 3+ attack tactics detected\n- **Lateral Movement**: Active network propagation attempts\n- **Action**: Isolate affected hosts and review network segmentation\n\n---\n\n# 🟡 Recommended Actions\n\n### Immediate (This Week)\n1. Review high-risk hosts in APT Risk Score table\n2. Investigate lateral movement source IPs\n3. Deploy additional logging for LOLBins\n\n### Short-term (This Month)\n1. Implement PowerShell constrained language mode\n2. Deploy EDR on critical systems\n3. Enable script block logging\n\n### Long-term (This Quarter)\n1. Conduct threat hunting exercises\n2. Implement network segmentation\n3. Deploy deception technology (honeypots)\n\n---\n\n# 📊 Current Threat Landscape\n\n**Coverage Status:**\n- ✅ Good: Impact, Collection, Credential Access\n- ⚠️ Fair: Defense Evasion, Initial Access\n- ❌ Poor: Lateral Movement (only 3 rules!)\n\n**Top Priorities:**\n1. Increase Lateral Movement detection\n2. Add Command & Control monitoring\n3. Implement data exfiltration detection",
+        "content": "# 🛡️ MITRE D3FEND Defensive Framework\n\n> **Framework Purpose**: Maps detected ATT&CK techniques to actionable defensive countermeasures using MITRE D3FEND taxonomy\n\n---\n\n## 🔴 Active Threats Requiring Immediate Action\n\n### PowerShell Abuse (T1059.001) - Rules 100500, 100501\n**D3FEND Countermeasures:**\n- **D3-PSEA** (Script Execution Logging): Enable PowerShell Module + Script Block logging\n- **D3-CRSPA** (Command-Line Pattern Analysis): Flag `-enc`, `-EncodedCommand`\n- **D3-AM** (Application Control): Deploy constrained language mode\n\n**Implementation (Next 24-48 Hours):**\n```powershell\n# Enable Script Block Logging via GPO\nSet-GPRegistryValue -Name \"PS Logging\" -Key \"HKLM\\Software\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging\" -ValueName \"EnableScriptBlockLogging\" -Type DWord -Value 1\n\n# Enable Module Logging\nSet-GPRegistryValue -Name \"PS Logging\" -Key \"HKLM\\Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\" -ValueName \"EnableModuleLogging\" -Type DWord -Value 1\n```\n\n**Telemetry Required:** Event IDs 4103, 4104  \n**Risk Reduction:** 70-85% (based on MITRE D3FEND effectiveness ratings)\n\n---\n\n### CertUtil Download Abuse (T1105) - Rules 100510, 100511, 100512\n**D3FEND Countermeasures:**\n- **D3-NTA** (Network Traffic Analysis): Monitor outbound HTTP/HTTPS from certutil\n- **D3-URLRA** (URL Reputation Analysis): Block suspicious destination IPs\n- **D3-FA** (File Analysis): Scan decoded/downloaded files\n- **D3-AM** (Application Control): Restrict certutil to administrators only\n\n**Implementation (This Week):**\n1. **Proxy/Firewall:** Log all certutil.exe network connections\n2. **DNS Filtering:** Block known malicious domains (use threat intel feeds)\n3. **GPO Policy:** Restrict certutil execution via AppLocker\n\n**Telemetry Required:** Proxy logs, Event 4688  \n**Risk Reduction:** 60-75%\n\n---\n\n### WMIC Remote Execution (T1047) - Rules 100530, 100531\n**D3FEND Countermeasures:**\n- **D3-RPCA** (RPC Traffic Analysis): Monitor DCOM connections (port 135)\n- **D3-LAM** (Local Account Monitoring): Track privileged logons\n- **D3-NI** (Network Isolation): Segment critical assets (VLANs)\n- **D3-CSPP** (Credential Access Pattern): Detect lateral movement\n\n**Implementation (This Month):**\n1. **Network Segmentation:** Isolate servers from workstations\n2. **RPC Monitoring:** Enable Windows Firewall logging for port 135\n3. **Privileged Access:** Implement tiered admin model\n4. **Audit Policy:** Enable Event 5712 (RPC server unavailable)\n\n**Telemetry Required:** Events 4624, 4672, 5712, Firewall logs  \n**Risk Reduction:** 50-65% (requires architecture changes)\n\n---\n\n### Process Injection (T1055) - Detected via fileless patterns\n**D3FEND Countermeasures:**\n- **D3-PSA** (Process Spawn Analysis): Monitor CreateRemoteThread API\n- **D3-MA** (Memory Analysis): Detect reflective DLL loading\n- **D3-EMCA** (Executable Memory Analysis): Hunt for shellcode\n- **D3-HBSS** (Host-Based Signature Scanning): Deploy EDR\n\n**Implementation (Next Quarter):**\n1. **Deploy Sysmon:** Events 8 (CreateRemoteThread), 10 (ProcessAccess)\n2. **EDR Solution:** Consider Windows Defender ATP or open-source alternatives\n3. **Memory Protection:** Enable EMET/Exploit Guard\n\n**Telemetry Required:** Sysmon Events 8, 10 OR EDR telemetry  \n**Risk Reduction:** 75-90% (requires EDR investment)\n\n---\n\n### Lateral Movement (T1021) - Rules 100531, correlation 100600\n**D3FEND Countermeasures:**\n- **D3-NTA** (Network Traffic Analysis): Monitor RDP (3389), SMB (445)\n- **D3-UAM** (User Account Monitoring): Track privileged logons\n- **D3-NI** (Network Isolation): Zero-trust segmentation\n- **D3-CSPP** (Credential Pattern): Deploy honeytokens\n\n**Implementation (Next Quarter):**\n1. **Jump Servers:** Centralize privileged access\n2. **Network Segmentation:** Micro-segmentation for critical assets\n3. **JIT Access:** Implement just-in-time admin privileges\n4. **Honeytokens:** Deploy decoy credentials to detect pass-the-hash\n\n**Telemetry Required:** Events 4624, 4625, 4634, 4672, network flow logs  \n**Risk Reduction:** 60-80% (requires zero-trust architecture)\n\n---\n\n## 📊 D3FEND Coverage Assessment\n\n| Defense Category | Techniques Covered | Implementation Status |\n|-----------------|-------------------|---------------------|\n| **Detect** | 15 techniques | ✅ Implemented (Wazuh rules) |\n| **Isolate** | 5 techniques | ⚠️ Partial (requires segmentation) |\n| **Harden** | 8 techniques | ⚠️ Partial (GPO configs needed) |\n| **Deceive** | 1 technique | ❌ Not implemented (honeytokens) |\n| **Evict** | 3 techniques | ⚠️ Partial (EDR required) |\n\n**Overall D3FEND Maturity:** Tier 2 (Detection-focused, response-ready)\n\n---\n\n## 🚨 Prioritized Action Plan\n\n### Priority 1: Critical (Next 24-48 Hours)\n- [ ] Enable PowerShell script block logging (GPO)\n- [ ] Review high-risk hosts in APT Risk Score table (Panel 40)\n- [ ] Block lateral movement source IPs identified in Panel 48\n\n### Priority 2: High (This Week)\n- [ ] Restrict certutil/bitsadmin to administrators (AppLocker)\n- [ ] Deploy proxy logging for download tools\n- [ ] Enable RPC traffic logging (Event 5712)\n\n### Priority 3: Medium (This Month)\n- [ ] Deploy Sysmon on critical servers\n- [ ] Implement network segmentation (server/workstation VLANs)\n- [ ] Audit privileged account usage patterns\n\n### Priority 4: Long-term (This Quarter)\n- [ ] Deploy EDR solution (Windows Defender ATP or open-source)\n- [ ] Implement jump servers for privileged access\n- [ ] Conduct purple team exercise using ATT&CK Navigator\n\n---\n\n## 📚 Additional Resources\n\n- **MITRE D3FEND**: https://d3fend.mitre.org\n- **ATT&CK Navigator**: https://mitre-attack.github.io/attack-navigator\n- **Wazuh Documentation**: https://documentation.wazuh.com\n- **Sysmon Config**: https://github.com/SwiftOnSecurity/sysmon-config\n\n---\n\n**Dashboard Version:** 2.0 (D3FEND Enhanced)  \n**Last Updated:** November 2024  \n**Framework Compliance:** MITRE ATT&CK v14, D3FEND v0.10",
         "mode": "markdown"
       },
       "pluginVersion": "12.2.0",
-      "title": "Threat Analysis & Recommendations",
+      "title": "D3FEND Countermeasure Guidance",
       "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "bf4jzzf6tx5oge"
+      },
+      "description": "Click D3FEND IDs to view official documentation",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "left",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true,
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "D3FEND ID"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View in D3FEND",
+                    "url": "https://d3fend.mitre.org/dao/artifact/d3f:${__value.raw}/"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 120
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ATT&CK ID"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View in ATT&CK",
+                    "url": "https://attack.mitre.org/techniques/${__value.raw}/"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 110
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Priority"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "Critical": {
+                        "color": "dark-red",
+                        "index": 0
+                      },
+                      "High": {
+                        "color": "red",
+                        "index": 1
+                      },
+                      "Low": {
+                        "color": "green",
+                        "index": 3
+                      },
+                      "Medium": {
+                        "color": "yellow",
+                        "index": 2
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 90
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Technique"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 140
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Countermeasure"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 200
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 25,
+        "w": 12,
+        "x": 12,
+        "y": 48
+      },
+      "id": 61,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "Priority"
+          }
+        ]
+      },
+      "pluginVersion": "12.2.0",
+      "targets": [
+        {
+          "columns": [],
+          "data": "ATT&CK ID,Technique,D3FEND ID,Countermeasure,Implementation,Priority\nT1059.001,PowerShell,D3-PSEA,Script Execution Logging,Enable Event 4104,High\nT1059.001,PowerShell,D3-CRSPA,Command-Line Pattern Analysis,Monitor -enc flag,High\nT1059.001,PowerShell,D3-AM,Application Control,Deploy AppLocker,Medium\nT1105,Ingress Tool Transfer,D3-NTA,Network Traffic Analysis,Monitor certutil connections,High\nT1105,Ingress Tool Transfer,D3-URLRA,URL Reputation,Block suspicious domains,Medium\nT1105,Ingress Tool Transfer,D3-FA,File Analysis,Scan downloads,Medium\nT1047,WMI Execution,D3-RPCA,RPC Traffic Analysis,Enable Event 5712,High\nT1047,WMI Execution,D3-LAM,Local Account Monitoring,Audit privileged users,Medium\nT1047,WMI Execution,D3-NI,Network Isolation,VLAN segmentation,High\nT1218.011,Rundll32,D3-PSA,Process Spawn Analysis,Track parent processes,High\nT1218.011,Rundll32,D3-AM,Application Control,Restrict DLL loading,Medium\nT1197,BITS Jobs,D3-NTA,Network Traffic Analysis,Monitor BITS transfers,Low\nT1197,BITS Jobs,D3-PSA,Process Spawn Analysis,Track bitsadmin,Low\nT1055,Process Injection,D3-PSA,Process Spawn Analysis,Deploy Sysmon Event 8,Critical\nT1055,Process Injection,D3-MA,Memory Analysis,Enable memory scanning,Critical\nT1055,Process Injection,D3-EMCA,Executable Memory Analysis,Hunt shellcode,Critical\nT1055,Process Injection,D3-HBSS,Host-Based Signature Scan,Deploy EDR,Critical\nT1021,Remote Services,D3-UAM,User Account Monitoring,Audit Event 4624,High\nT1021,Remote Services,D3-NI,Network Isolation,Implement segmentation,High\nT1021,Remote Services,D3-CSPP,Credential Pattern Analysis,Deploy honeytokens,Medium\nT1140,Deobfuscate,D3-FA,File Analysis,Scan decoded files,Medium\nT1140,Deobfuscate,D3-PSA,Process Spawn Analysis,Monitor certutil -decode,Medium\nT1218.005,MSHTA,D3-PSA,Process Spawn Analysis,Track mshta execution,High\nT1218.005,MSHTA,D3-AM,Application Control,Restrict mshta usage,Medium\nT1218.010,Regsvr32,D3-PSA,Process Spawn Analysis,Monitor scriptlet abuse,High\nT1218.010,Regsvr32,D3-NTA,Network Traffic Analysis,Block remote .sct files,Medium\nT1127.001,MSBuild,D3-PSA,Process Spawn Analysis,Track msbuild with .xml,Medium\nT1127.001,MSBuild,D3-AM,Application Control,Restrict msbuild,Low\nT1059.005,VBScript,D3-PSA,Process Spawn Analysis,Monitor cscript/wscript,Medium\nT1059.005,VBScript,D3-CRSPA,Command-Line Analysis,Detect remote scripts,Medium",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "D3FEND Technique Matrix",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "bf4jzzf6tx5oge"
+      },
+      "description": "Implementation coverage across MITRE D3FEND's 5 defense categories",
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": 0
+              },
+              {
+                "color": "orange",
+                "value": 30
+              },
+              {
+                "color": "yellow",
+                "value": 50
+              },
+              {
+                "color": "green",
+                "value": 70
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Detect"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "🔍 Detect"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Isolate"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "🚧 Isolate"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Harden"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "🛡️ Harden"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Deceive"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "🎭 Deceive"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Evict"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "🚫 Evict"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 73
+      },
+      "id": 63,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "showPercentChange": false,
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0",
+      "targets": [
+        {
+          "columns": [],
+          "data": "[\n  {\"Category\": \"Detect\", \"Coverage\": 85},\n  {\"Category\": \"Isolate\", \"Coverage\": 40},\n  {\"Category\": \"Harden\", \"Coverage\": 55},\n  {\"Category\": \"Deceive\", \"Coverage\": 15},\n  {\"Category\": \"Evict\", \"Coverage\": 45}\n]",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "bf4jzzf6tx5oge"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "simple",
+          "refId": "A",
+          "root_selector": "",
+          "source": "inline",
+          "type": "json",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "D3FEND Defense Category Maturity",
+      "type": "stat"
     },
     {
       "datasource": "Wazuh-Alerts-1",
@@ -2486,9 +2856,9 @@
       },
       "gridPos": {
         "h": 10,
-        "w": 12,
-        "x": 12,
-        "y": 45
+        "w": 24,
+        "x": 0,
+        "y": 81
       },
       "id": 62,
       "options": {
@@ -2548,8 +2918,11 @@
       "type": "table"
     },
     {
-      "datasource": "Wazuh-Alerts-1",
-      "description": "Per-alert view with Agent, Level, and MITRE mapping so analysts know what to investigate next.",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "Wazuh-Alerts-1"
+      },
+      "description": "Complete view with 398-technique D3FEND mappings including actions, descriptions, implementations, and priority",
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -2557,6 +2930,7 @@
             "cellOptions": {
               "type": "auto"
             },
+            "filterable": true,
             "footer": {
               "reducers": []
             },
@@ -2569,15 +2943,126 @@
               {
                 "color": "green",
                 "value": 0
-              },
-              {
-                "color": "red",
-                "value": 8
               }
             ]
           }
         },
         "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 180
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Agent"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Level"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 70
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "from": 0,
+                      "result": {
+                        "color": "green"
+                      },
+                      "to": 4
+                    },
+                    "type": "range"
+                  },
+                  {
+                    "options": {
+                      "from": 5,
+                      "result": {
+                        "color": "yellow"
+                      },
+                      "to": 7
+                    },
+                    "type": "range"
+                  },
+                  {
+                    "options": {
+                      "from": 8,
+                      "result": {
+                        "color": "red"
+                      },
+                      "to": 15
+                    },
+                    "type": "range"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Tactic"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 160
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "auto",
+                  "wrapText": true
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Technique"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 180
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "auto",
+                  "wrapText": true
+                }
+              }
+            ]
+          },
           {
             "matcher": {
               "id": "byName",
@@ -2590,30 +3075,301 @@
                   {
                     "targetBlank": true,
                     "title": "Open in MITRE ATT&CK",
-                    "url": "https://attack.mitre.org/techniques/${__value}/"
+                    "url": "https://attack.mitre.org/techniques/${__value.raw}/"
                   }
                 ]
+              },
+              {
+                "id": "custom.width",
+                "value": 120
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "auto",
+                  "wrapText": true
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Priority"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 90
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "Critical": {
+                        "color": "dark-red",
+                        "index": 0
+                      }
+                    },
+                    "type": "value"
+                  },
+                  {
+                    "options": {
+                      "High": {
+                        "color": "dark-orange",
+                        "index": 1
+                      }
+                    },
+                    "type": "value"
+                  },
+                  {
+                    "options": {
+                      "Medium": {
+                        "color": "dark-yellow",
+                        "index": 2
+                      }
+                    },
+                    "type": "value"
+                  },
+                  {
+                    "options": {
+                      "Low": {
+                        "color": "dark-green",
+                        "index": 3
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "D3FEND Action"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 250
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text",
+                  "wrapText": true
+                }
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "pattern": ".*(Credential Dumping|Process Injection|LSASS).*",
+                      "result": {
+                        "color": "red",
+                        "index": 0
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": ".*(PowerShell|Script Execution|Authentication Process).*",
+                      "result": {
+                        "color": "orange",
+                        "index": 1
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": ".*(Monitor|Track|Audit|Enable).*",
+                      "result": {
+                        "color": "blue",
+                        "index": 2
+                      }
+                    },
+                    "type": "regex"
+                  },
+                  {
+                    "options": {
+                      "pattern": ".*(General Monitoring).*",
+                      "result": {
+                        "color": "text",
+                        "index": 3
+                      }
+                    },
+                    "type": "regex"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "What It Does"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 250
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "auto",
+                  "wrapText": true
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "How to Implement"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 280
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "auto",
+                  "wrapText": true
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Mapping Type"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "exact": {
+                        "color": "green",
+                        "index": 0,
+                        "text": "Exact"
+                      }
+                    },
+                    "type": "value"
+                  },
+                  {
+                    "options": {
+                      "parent": {
+                        "color": "blue",
+                        "index": 1,
+                        "text": "Parent"
+                      }
+                    },
+                    "type": "value"
+                  },
+                  {
+                    "options": {
+                      "tactic": {
+                        "color": "yellow",
+                        "index": 2,
+                        "text": "Tactic"
+                      }
+                    },
+                    "type": "value"
+                  },
+                  {
+                    "options": {
+                      "default": {
+                        "color": "text",
+                        "index": 3,
+                        "text": "Default"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Alert Description"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 300
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "auto",
+                  "wrapText": true
+                }
               }
             ]
           }
         ]
       },
       "gridPos": {
-        "h": 12,
+        "h": 15,
         "w": 24,
         "x": 0,
-        "y": 55
+        "y": 91
       },
       "id": 80,
       "options": {
-        "cellHeight": "sm",
-        "showHeader": true
+        "cellHeight": "md",
+        "footer": {
+          "countRows": false,
+          "fields": [],
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Level"
+          }
+        ]
       },
       "pluginVersion": "12.2.0",
       "targets": [
         {
           "bucketAggs": [],
-          "datasource": "Wazuh-Alerts-1",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "Wazuh-Alerts-1"
+          },
           "luceneQueryType": "Lucene",
           "metrics": [
             {
@@ -2624,19 +3380,25 @@
               "type": "raw_data"
             }
           ],
-          "query": "agent.name:($agent)",
+          "query": "agent.name:($agent) AND rule.mitre.id:* AND rule.d3fend.actions:*",
           "refId": "A",
           "timeField": "@timestamp"
         }
       ],
-      "title": "Alerts with MITRE Context",
+      "title": "Alerts with MITRE Context & D3FEND Recommendations (Comprehensive)",
       "transformations": [
         {
           "id": "organize",
           "options": {
+            "excludeByName": {},
             "includeByName": {
               "@timestamp": true,
               "agent.name": true,
+              "rule.d3fend.actions": true,
+              "rule.d3fend.descriptions": true,
+              "rule.d3fend.implementations": true,
+              "rule.d3fend.mapping_type": true,
+              "rule.d3fend.priority": true,
               "rule.description": true,
               "rule.level": true,
               "rule.mitre.id": true,
@@ -2646,7 +3408,12 @@
             "indexByName": {
               "@timestamp": 0,
               "agent.name": 1,
-              "rule.description": 6,
+              "rule.d3fend.actions": 7,
+              "rule.d3fend.descriptions": 8,
+              "rule.d3fend.implementations": 9,
+              "rule.d3fend.mapping_type": 10,
+              "rule.d3fend.priority": 6,
+              "rule.description": 11,
               "rule.level": 2,
               "rule.mitre.id": 5,
               "rule.mitre.tactic": 3,
@@ -2655,12 +3422,29 @@
             "renameByName": {
               "@timestamp": "Time",
               "agent.name": "Agent",
-              "rule.description": "Description",
+              "rule.d3fend.actions": "D3FEND Action",
+              "rule.d3fend.descriptions": "What It Does",
+              "rule.d3fend.implementations": "How to Implement",
+              "rule.d3fend.mapping_type": "Mapping Type",
+              "rule.d3fend.priority": "Priority",
+              "rule.description": "Alert Description",
               "rule.level": "Level",
               "rule.mitre.id": "Technique ID",
               "rule.mitre.tactic": "Tactic",
               "rule.mitre.technique": "Technique"
             }
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "Level"
+              }
+            ],
+            "fields": {}
           }
         }
       ],
@@ -2701,7 +3485,7 @@
             "properties": [
               {
                 "id": "custom.width",
-                "value": 180
+                "value": 139
               }
             ]
           },
@@ -2713,7 +3497,7 @@
             "properties": [
               {
                 "id": "custom.width",
-                "value": 150
+                "value": 131
               }
             ]
           },
@@ -2747,7 +3531,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 67
+        "y": 106
       },
       "id": 110,
       "options": {
@@ -2763,7 +3547,7 @@
         "sortBy": [
           {
             "desc": true,
-            "displayName": "Timestamp"
+            "displayName": "MITRE Technique"
           }
         ]
       },
@@ -2828,7 +3612,8 @@
     "security",
     "apt",
     "lolbins",
-    "fileless"
+    "fileless",
+    "d3fend"
   ],
   "templating": {
     "list": [
@@ -2851,12 +3636,12 @@
     ]
   },
   "time": {
-    "from": "now-1w/w",
-    "to": "now"
+    "from": "2025-11-10T00:00:00.000Z",
+    "to": "2025-11-22T23:59:59.000Z"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Wazuh - MITRE ATT&CK Advanced Threat Analysis (Agent-aware)",
-  "uid": "wazuh-mitre-advanced",
-  "version": 48
+  "title": "Wazuh - MITRE ATT&CK + D3FEND Advanced Threat Analysis",
+  "uid": "wazuh-mitre-d3fend-enhanced",
+  "version": 14
 }
