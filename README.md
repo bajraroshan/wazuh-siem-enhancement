@@ -89,27 +89,34 @@ Commercial SIEM platforms cost **$200,000-$500,000 annually**, placing advanced 
 
 ```
 wazuh-siem-enhancement/
-├── README.md                          # This file
-├── LICENSE                            # GNU GPL v3.0
+├── README.md                           # Project overview and documentation
+├── LICENSE                             # GNU GPL v3.0 license
 │
-├── rules/                             # Detection Rules
-│   └── local_rules.xml                # 26 custom Wazuh rules
+├── rules/                              # Custom Detection Rules
+│   └── local_rules.xml                 # 26 ATT&CK-aligned behavioural rules
 │
-├── dashboards/                        # Grafana Dashboards
+├── dashboards/                         # Grafana Dashboards
 │   └── wazuh-mitre-advanced-threat-dashboard.json
 │
-├── d3fend/                            # D3FEND Enrichment
-│   ├── d3fend-enrichment-pipeline.json       # Elasticsearch ingest pipeline
-│   ├── mitre-to-d3fend-mapping-398.json      # ATT&CK → D3FEND mappings
-│   └── install-d3fend-pipeline.sh            # Deployment script
+├── d3fend/                             # D3FEND Enrichment Framework
+│   ├── d3fend-enrichment-pipeline.json # Elasticsearch ingest pipeline
+│   ├── mitre-to-d3fend-mapping-398.json # 398 ATT&CK→D3FEND defensive mappings
+│   └── install-d3fend-pipeline.sh      # Automated deployment script
 │
-├── scripts/                           # Validation & Testing
-│   └── Run-SystematicTests.ps1        # 35-test validation suite (847 lines)
+├── scripts/                            # Automation & Validation
+│   ├── deploy_rules.sh                 # (Optional) Rule deployment helper
+│   ├── complete_installation.sh        # One-click full installer
+│   └── Run-SystematicTests.ps1         # 35-test adversary simulation suite (847 lines)
 │
-└── docs/                              # Documentation
-    ├── installation-guide.md
-    ├── dashboard-user-guide.md
-    └── testing-methodology.md
+└── docs/                               # Full Documentation Set (Thesis-Ready)
+    ├── README.md                       # Documentation index
+    ├── full-installation-guide.md      # End-to-end installation & setup
+    ├── installation-guide.md           # Quick-start installation guide
+    ├── configuration-reference.md      # Rule, pipeline & mapping reference
+    ├── rule-development-guide.md       # Engineering methodology for 26 rules
+    ├── dashboard-customisation.md      # Editing & extending the Grafana dashboard
+    ├── troubleshooting-faq.md          # Common issues & solutions
+    └── api-integration-guide.md        # Programmatic access & integrations
 ```
 
 ---
